@@ -1,4 +1,5 @@
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
+
 import HomePage from "./components/HomePage.jsx";
 import AboutSection from "./components/AboutSection.jsx";
 import ShopByCategory from "./components/ShopByCategory.jsx";
@@ -10,27 +11,33 @@ import AdminLogin from "./pages/AdminLogin.jsx";
 import AdminDashboard from "./pages/AdminDashboard.jsx";
 import ProtectedRoute from "./components/ProtectedRoute.jsx";
 
+function PublicLayout() {
+  return (
+    <>
+      <HomePage />
+      <AboutSection />
+      <ShopByCategory />
+      <FreeTrial />
+      <OurServices />
+      <Footer />
+    </>
+  );
+}
+
 function App() {
   return (
     <BrowserRouter>
       <Routes>
-        {/* Public Website */}
-        <Route
-          path="/"
-          element={
-            <>
-              <HomePage />
-              <AboutSection />
-              <ShopByCategory />
-              <FreeTrial />
-              <OurServices />
-              <Footer />
-            </>
-          }
-        />
+        {/* ================= PUBLIC WEBSITE ================= */}
+        <Route path="/" element={<PublicLayout />} />
 
-        {/* Admin */}
+        {/* ================= ADMIN ROUTES ================= */}
+
+        {/* Redirect /admin → /admin/login */}
+        <Route path="/admin" element={<Navigate to="/admin/login" replace />} />
+
         <Route path="/admin/login" element={<AdminLogin />} />
+
         <Route
           path="/admin/dashboard"
           element={
@@ -39,6 +46,9 @@ function App() {
             </ProtectedRoute>
           }
         />
+
+        {/* ================= FALLBACK ================= */}
+        <Route path="*" element={<Navigate to="/" replace />} />
       </Routes>
     </BrowserRouter>
   );
