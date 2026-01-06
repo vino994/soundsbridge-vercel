@@ -1,7 +1,14 @@
+/* ✅ Google font MUST be first */
+@import url('https://fonts.googleapis.com/css2?family=Playwrite+RO:wght@100..400&family=Sirin+Stencil&display=swap');
+
+/* ✅ Tailwind v4 import */
 @import "tailwindcss";
+
+/* Global */
 html {
   scroll-behavior: smooth;
 }
+
 /* Hide horizontal scrollbar */
 .scrollbar-hide::-webkit-scrollbar {
   display: none;
@@ -9,4 +16,47 @@ html {
 .scrollbar-hide {
   -ms-overflow-style: none;
   scrollbar-width: none;
+}
+
+/* Logo animation */
+@keyframes logoFade {
+  from {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+.animate-logoFade {
+  animation: logoFade 0.6s ease forwards;
+}
+
+/* Navbar underline animation */
+.nav-link {
+  position: relative;
+  color: white;
+  font-weight: 500;
+  padding-bottom: 4px;
+}
+
+.nav-link::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  height: 2px;
+  width: 0;
+  background-color: #f97316;
+  transition: width 0.3s ease;
+}
+
+.nav-link:hover::after,
+.nav-link.active::after {
+  width: 100%;
+}
+
+.nav-link.active {
+  color: #f97316;
 }

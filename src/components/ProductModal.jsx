@@ -30,7 +30,7 @@ const ProductModal = ({ product, onClose }) => {
           className="w-full h-56 object-cover rounded-lg mb-6"
         />
 
-        <h3 className="text-2xl font-bold mb-2">{product.title}</h3>
+        <h3 className="text-2xl font-bold mb-2" style={{ fontFamily: '"Sirin Stencil", sans-serif' }}>{product.title}</h3>
         <p className="text-gray-600 mb-4">{product.fullDescription}</p>
 
         <p className="text-xl font-semibold text-blue-600 mb-6">

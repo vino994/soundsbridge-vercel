@@ -41,7 +41,7 @@ const OurServices = () => {
       <div className="container mx-auto px-4 md:px-6">
         {/* Header */}
         <div className="text-center mb-12 md:mb-16">
-          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-gray-800 mb-3 md:mb-4">
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-gray-800 mb-3 md:mb-4" style={{ fontFamily: '"Sirin Stencil", sans-serif' }}>
             Our Services
           </h2>
           <div className="w-20 md:w-24 h-1 bg-blue-600 mx-auto rounded"></div>

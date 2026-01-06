@@ -1,5 +1,5 @@
 import { useState } from "react";
-import img1 from "../assets/her-image-1.webp";
+import img1 from "../assets/hero-image-3.webp";
 import api from "../utils/api";
 
 const FreeTrial = () => {
@@ -21,12 +21,11 @@ const FreeTrial = () => {
 
   const submit = async (e) => {
     e.preventDefault();
-
     try {
       setLoading(true);
       await api.post("/leads", form);
 
-      setSuccess("✅ Free trial booked successfully!");
+      setSuccess("✅ Your free hearing aid trial has been booked!");
       setForm({
         name: "",
         email: "",
@@ -47,33 +46,48 @@ const FreeTrial = () => {
   };
 
   return (
-    <section className="relative w-full flex flex-col items-center justify-center px-6 text-center overflow-hidden bg-gradient-to-l from-white via-sky to-sky-300 py-24" id="about-us">
-      <div className="container mx-auto px-6">
-        {/* HEADER */}
-        <div className="text-center mb-12 md:mb-16">
-          <h2 className="text-2xl sm:text-3xl md:text-5xl font-bold text-gray-800 mb-4">
-            OUR FREE TRIAL
+    <section
+      id="about-us"
+      className="relative w-full py-24 px-6 bg-gradient-to-l from-white via-sky to-sky-300 overflow-hidden"
+    >
+      <div className="container mx-auto">
+
+        {/* SEO HEADER */}
+        <div className="text-center mb-14">
+          <h2
+            className="text-3xl sm:text-4xl md:text-5xl font-bold text-gray-800 mb-4"
+            style={{ fontFamily: '"Sirin Stencil", sans-serif' }}
+          >
+            Free Hearing Aid Trial in Kerala
           </h2>
-          <div className="w-24 h-1 bg-blue-600 mx-auto rounded"></div>
+          <p className="text-gray-600 max-w-3xl mx-auto">
+            Experience advanced digital hearing aids with a no-risk free trial.
+            Get expert consultation and personalized recommendations from
+            SoundsBridge hearing specialists.
+          </p>
+          <div className="w-24 h-1 bg-blue-600 mx-auto rounded mt-6"></div>
         </div>
 
-        {/* TRIAL CARD */}
-        <div className="max-w-6xl h-[500px] sm:h-[450px] mx-auto bg-white bg-opacity-10 backdrop-blur-md p-4 md:p-8 rounded-xl shadow-lg relative overflow-hidden">
+        {/* HERO CARD */}
+        <div className="relative max-w-6xl mx-auto h-[500px] rounded-2xl overflow-hidden shadow-xl">
           <img
             src={img1}
-            alt="Free Trial"
-            className="w-full h-full object-cover rounded-xl"
+            alt="Free hearing aid trial consultation"
+            loading="lazy"
+            className="absolute inset-0 w-full h-full object-cover"
           />
-          <div className="absolute inset-0 bg-black/30 rounded-xl flex flex-col items-center justify-center p-6 text-white">
+
+          <div className="absolute inset-0 bg-black/40 flex flex-col items-center justify-center text-center p-6 text-white">
             <h3 className="text-2xl md:text-3xl font-bold mb-4">
-              Start Your Free Trial Today!
+              Book a Free Hearing Aid Trial – No Obligation
             </h3>
-            <p className="mb-6 max-w-2xl">
-              Experience our hearing aids with a 30-day free trial.
+            <p className="max-w-2xl mb-6 text-gray-200">
+              Try premium hearing aids at home and discover clearer sound,
+              comfort, and confidence before you decide.
             </p>
             <button
               onClick={() => setShowForm(true)}
-              className="bg-blue-700 hover:bg-blue-800 px-6 py-3 rounded-full font-semibold"
+              className="bg-blue-700 hover:bg-blue-800 px-8 py-3 rounded-full font-semibold transition"
             >
               Book Your Free Trial
             </button>
@@ -81,20 +95,23 @@ const FreeTrial = () => {
         </div>
       </div>
 
-      {/* MODAL FORM */}
+      {/* GLASSMORPHISM FORM MODAL */}
       {showForm && (
-        <div className="fixed inset-0 bg-black/50 flex justify-center items-center z-50 p-4">
-          <div className="bg-white rounded-xl max-w-md w-full p-6 relative">
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/50 p-4">
+          <div className="relative max-w-md w-full rounded-2xl bg-white/20 backdrop-blur-xl border border-white/30 shadow-2xl p-6 text-gray-900">
             <button
               onClick={() => setShowForm(false)}
-              className="absolute top-4 right-4 text-xl"
+              className="absolute top-4 right-4 text-2xl text-gray-700 hover:text-black cursor-pointer"
             >
-              &times;
+              ×
             </button>
 
-            <h2 className="text-2xl font-bold mb-4 text-center">
-              Book Free Trial
-            </h2>
+            <h3 className="text-2xl font-bold text-center mb-2">
+              Book Your Free Trial
+            </h3>
+            <p className="text-sm text-center text-white mb-4">
+              Fill in your details and our hearing expert will contact you.
+            </p>
 
             {success && (
               <p className="text-green-600 text-center mb-3">{success}</p>
@@ -107,26 +124,26 @@ const FreeTrial = () => {
                 value={form.name}
                 onChange={handleChange}
                 required
-                className="w-full border p-2 rounded"
+                className="w-full px-4 py-3 rounded-lg bg-white/70 focus:outline-none focus:ring-2 focus:ring-blue-500"
               />
 
               <input
                 name="email"
                 type="email"
-                placeholder="Email"
+                placeholder="Email Address"
                 value={form.email}
                 onChange={handleChange}
                 required
-                className="w-full border p-2 rounded"
+                className="w-full px-4 py-3 rounded-lg bg-white/70 focus:outline-none focus:ring-2 focus:ring-blue-500"
               />
 
               <input
                 name="phone"
-                placeholder="Phone"
+                placeholder="Phone Number"
                 value={form.phone}
                 onChange={handleChange}
                 required
-                className="w-full border p-2 rounded"
+                className="w-full px-4 py-3 rounded-lg bg-white/70 focus:outline-none focus:ring-2 focus:ring-blue-500"
               />
 
               <input
@@ -135,22 +152,22 @@ const FreeTrial = () => {
                 value={form.preferredDate}
                 onChange={handleChange}
                 required
-                className="w-full border p-2 rounded"
+                className="w-full px-4 py-3 rounded-lg bg-white/70 focus:outline-none focus:ring-2 focus:ring-blue-500"
               />
 
               <textarea
                 name="notes"
-                placeholder="Notes"
+                placeholder="Any hearing concerns or notes (optional)"
                 value={form.notes}
                 onChange={handleChange}
-                className="w-full border p-2 rounded"
+                className="w-full px-4 py-3 rounded-lg bg-white/70 focus:outline-none focus:ring-2 focus:ring-blue-500"
               />
 
               <button
                 disabled={loading}
-                className="w-full bg-blue-700 text-white py-2 rounded disabled:opacity-50"
+                className="w-full bg-blue-700 hover:bg-blue-800 text-white py-3 rounded-full font-semibold transition disabled:opacity-50 cursor-pointer"
               >
-                {loading ? "Submitting..." : "Submit"}
+                {loading ? "Submitting..." : "Submit Request"}
               </button>
             </form>
           </div>

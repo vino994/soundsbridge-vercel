@@ -3,6 +3,8 @@ import api from "../utils/api";
 
 const ConsultationFlow = ({ onClose }) => {
   const [step, setStep] = useState(1);
+  const [loading, setLoading] = useState(false);
+  const [success, setSuccess] = useState(false);
 
   const [formData, setFormData] = useState({
     name: "",
@@ -13,17 +15,11 @@ const ConsultationFlow = ({ onClose }) => {
     notes: "",
   });
 
-  const [loading, setLoading] = useState(false);
-  const [success, setSuccess] = useState(false);
-
-  // 🔑 LOCK BODY SCROLL
+  /* 🔒 LOCK BODY SCROLL */
   useEffect(() => {
     document.body.style.overflow = "hidden";
-    document.body.style.pointerEvents = "auto";
-
     return () => {
       document.body.style.overflow = "auto";
-      document.body.style.pointerEvents = "auto";
     };
   }, []);
 
@@ -33,7 +29,6 @@ const ConsultationFlow = ({ onClose }) => {
 
   const submitForm = async (e) => {
     e.preventDefault();
-
     try {
       setLoading(true);
 
@@ -52,7 +47,7 @@ Notes: ${formData.notes}
 
       setTimeout(() => {
         setSuccess(false);
-        onClose(); // 🔑 triggers cleanup
+        onClose();
       }, 2500);
     } catch {
       alert("❌ Submission failed. Try again.");
@@ -62,100 +57,117 @@ Notes: ${formData.notes}
   };
 
   return (
-    <div className="fixed inset-0 bg-black/60 z-50 flex items-center justify-center p-4">
-      <div className="bg-white rounded-xl max-w-md w-full p-6 relative">
+    <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/60 p-4">
+      {/* GLASS CARD */}
+      <div className="relative max-w-md w-full rounded-2xl bg-white/20 backdrop-blur-xl border border-white/30 shadow-2xl p-6 text-gray-900">
+
         {/* CLOSE */}
         <button
           onClick={onClose}
-          className="absolute top-3 right-4 text-2xl font-bold"
+          className="absolute top-4 right-4 text-2xl font-bold text-gray-700 hover:text-black"
         >
           ×
         </button>
 
-        {/* SUCCESS */}
+        {/* SUCCESS STATE */}
         {success ? (
-          <div className="text-center py-10">
+          <div className="text-center py-12">
             <h2 className="text-2xl font-bold text-green-600 mb-3">
-              ✅ Submitted Successfully
+              ✅ Consultation Booked
             </h2>
-            <p>Our team will contact you shortly.</p>
+            <p className="text-gray-700">
+              Our hearing specialist will contact you shortly.
+            </p>
           </div>
         ) : (
           <>
+            {/* STEP 1 */}
             {step === 1 && (
               <>
-                <h2 className="text-xl font-bold mb-4">
-                  Quick Qualification
+                <h2 className="text-2xl font-bold mb-2 text-center">
+                  Quick Hearing Check
                 </h2>
+                <p className="text-sm text-center text-gray-700 mb-4">
+                  Help us understand your hearing needs
+                </p>
 
                 <select
                   name="hearingIssue"
                   onChange={handleChange}
-                  className="w-full border p-2 rounded mb-4"
                   required
+                  className="w-full px-4 py-3 rounded-lg bg-white/70 focus:outline-none focus:ring-2 focus:ring-blue-500 mb-4"
                 >
                   <option value="">Do you experience hearing loss?</option>
-                  <option value="Mild">Mild</option>
-                  <option value="Moderate">Moderate</option>
-                  <option value="Severe">Severe</option>
+                  <option value="Mild">Mild hearing difficulty</option>
+                  <option value="Moderate">Moderate hearing loss</option>
+                  <option value="Severe">Severe hearing loss</option>
                 </select>
 
                 <button
                   onClick={() => setStep(2)}
-                  className="w-full bg-blue-700 text-white py-2 rounded"
+                  disabled={!formData.hearingIssue}
+                  className="w-full bg-blue-700 hover:bg-blue-800 text-white py-3 rounded-full font-semibold transition disabled:opacity-50"
                 >
                   Continue
                 </button>
               </>
             )}
 
+            {/* STEP 2 */}
             {step === 2 && (
               <>
-                <h2 className="text-xl font-bold mb-4">
-                  Book Consultation
+                <h2 className="text-2xl font-bold mb-2 text-center">
+                  Book Free Consultation
                 </h2>
+                <p className="text-sm text-center text-gray-700 mb-4">
+                  Enter your details and preferred consultation date
+                </p>
 
                 <form onSubmit={submitForm} className="space-y-3">
                   <input
                     name="name"
                     placeholder="Full Name"
                     onChange={handleChange}
-                    className="w-full border p-2 rounded"
                     required
+                    className="w-full px-4 py-3 rounded-lg bg-white/70 focus:outline-none focus:ring-2 focus:ring-blue-500"
                   />
+
                   <input
                     name="email"
                     type="email"
-                    placeholder="Email"
+                    placeholder="Email Address"
                     onChange={handleChange}
-                    className="w-full border p-2 rounded"
                     required
+                    className="w-full px-4 py-3 rounded-lg bg-white/70 focus:outline-none focus:ring-2 focus:ring-blue-500"
                   />
+
                   <input
                     name="phone"
-                    placeholder="Phone"
+                    placeholder="Phone Number"
                     onChange={handleChange}
-                    className="w-full border p-2 rounded"
                     required
+                    className="w-full px-4 py-3 rounded-lg bg-white/70 focus:outline-none focus:ring-2 focus:ring-blue-500"
                   />
+
                   <input
                     name="preferredDate"
                     type="date"
                     onChange={handleChange}
-                    className="w-full border p-2 rounded"
+                    className="w-full px-4 py-3 rounded-lg bg-white/70 focus:outline-none focus:ring-2 focus:ring-blue-500"
                   />
+
                   <textarea
                     name="notes"
-                    placeholder="Additional notes"
+                    placeholder="Any additional hearing concerns (optional)"
                     onChange={handleChange}
-                    className="w-full border p-2 rounded"
+                    className="w-full px-4 py-3 rounded-lg bg-white/70 focus:outline-none focus:ring-2 focus:ring-blue-500"
                   />
 
                   <button
                     disabled={loading}
-                    className="w-full bg-green-600 text-white py-2 rounded"
+                    className="w-full bg-green-600 hover:bg-green-700 text-white py-3 rounded-full font-semibold transition disabled:opacity-50"
                   >
-                    {loading ? "Submitting..." : "Submit"}
+                    {loading ? "Submitting..." : "Submit Request"}
                   </button>
                 </form>
               </>
