@@ -7,6 +7,7 @@ const Preloader = () => {
         src={logo}
         alt="SoundsBridge Hearing Care Logo"
         className="h-20 w-20 mb-6 animate-pulse"
+        loading="eager"
       />
 
       <h1

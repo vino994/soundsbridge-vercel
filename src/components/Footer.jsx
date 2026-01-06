@@ -38,6 +38,7 @@ const Footer = () => {
                 src={logo}
                 alt="SoundsBridge hearing aid clinic logo"
                 className="h-10 w-10"
+                loading="eager"
               />
               <h2
                 className="text-2xl font-bold tracking-widest

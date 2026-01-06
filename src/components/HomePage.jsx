@@ -3,6 +3,7 @@ import Navbar from "./Navbar.jsx";
 import heroImg from "../assets/hero-image.jpg";
 import ConsultationFlow from "./ConsultationFlow.jsx";
 import FAQSchema from "./FAQSchema";
+
 const HomePage = () => {
   const [openConsultation, setOpenConsultation] = useState(false);
 
@@ -17,11 +18,13 @@ const HomePage = () => {
         id="home"
       >
         {/* BACKGROUND IMAGE */}
-        <img
-          src={heroImg}
-          alt="Hearing Aid"
-          className="absolute inset-0 w-full h-full object-cover object-center"
-        />
+    <img
+  src={heroImg}
+  alt="Digital hearing aids improving hearing clarity"
+  className="absolute inset-0 w-full h-full object-cover"
+  loading="eager"
+  fetchpriority="high"
+/>
 
         {/* DARK OVERLAY */}
         <div className="absolute inset-0 bg-black/40"></div>

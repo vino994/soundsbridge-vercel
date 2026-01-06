@@ -144,6 +144,7 @@ const Navbar = () => {
               target="_blank"
               rel="noreferrer"
               className="text-white hover:text-green-400 text-xl"
+              aria-label="Open navigation menu"
             >
               <FaWhatsapp />
             </a>
@@ -160,6 +161,7 @@ const Navbar = () => {
           <button
             className="md:hidden ml-auto text-white text-3xl"
             onClick={() => setIsOpen(!isOpen)}
+            aria-label="Open navigation menu"
           >
             {isOpen ? <HiX /> : <HiMenu />}
           </button>
@@ -204,6 +206,7 @@ const Navbar = () => {
                   target="_blank"
                   rel="noreferrer"
                   className="text-green-400 text-2xl"
+                  aria-label="Chat with SoundsBridge on WhatsApp"
                 >
                   <FaWhatsapp />
                 </a>
@@ -218,6 +221,7 @@ const Navbar = () => {
         href="https://wa.me/918920846756"
         target="_blank"
         rel="noreferrer"
+        aria-label="Chat with SoundsBridge on WhatsApp"
         className="fixed bottom-6 right-6 z-50 bg-green-500 hover:bg-green-600 text-white p-4 rounded-full shadow-lg animate-bounce"
       >
         <FaWhatsapp className="text-2xl" />
