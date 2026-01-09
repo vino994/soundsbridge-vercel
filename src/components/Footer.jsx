@@ -71,8 +71,8 @@ const Footer = () => {
               📞 <a href="tel:+918920846756" className="hover:text-orange-400">+91 89208 46756</a>
             </p>
             <p className="text-sm">
-              ✉️ <a href="mailto:info@soundsbridge.com" className="hover:text-orange-400">
-                info@soundsbridge.com
+              ✉️ <a href="mailto:soundsbridgehearing@gmail.com" className="hover:text-orange-400">
+                soundsbridgehearing@gmail.com
               </a>
             </p>
           </div>
@@ -156,7 +156,7 @@ const Footer = () => {
             </h3>
             <div className="flex space-x-4">
               <a
-                href="https://facebook.com/login"
+                href="https://www.facebook.com/share/1AUvtnUcnr/"
                 target="_blank"
                 rel="noreferrer"
                 aria-label="SoundsBridge Facebook"
@@ -183,7 +183,7 @@ const Footer = () => {
                 <FaLinkedinIn />
               </a>
               <a
-                href="https://instagram.com/accounts/login"
+                href="https://www.instagram.com/sounds_bridge?igsh=Nng5cXg1OGMwNW5l"
                 target="_blank"
                 rel="noreferrer"
                 aria-label="SoundsBridge Instagram"

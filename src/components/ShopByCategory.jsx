@@ -112,7 +112,7 @@ const ShopByCategory = () => {
             className="inline-block bg-orange-500 hover:bg-orange-600 text-white px-8 py-3 rounded-full font-semibold transition"
             aria-label="Book free hearing aid consultation"
           >
-            Book a Free Hearing Aid Consultation
+           Get Free Consultation
           </a>
         </div>
       </div>

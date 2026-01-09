@@ -1,6 +1,6 @@
-import p1 from "../assets/product-1.jpg";
-import p2 from "../assets/product-2.jpg";
-import p3 from "../assets/product-3.jfif";
+import p1 from "../assets/ear-1.jpeg";
+import p2 from "../assets/ear-2.jpeg";
+import p3 from "../assets/ear-3.jpeg";
 import p4 from "../assets/product-4.jpg";
 
 export const products = [
