@@ -6,7 +6,7 @@ import p4 from "../assets/product-4.jpg";
 export const products = [
   {
     id: 1,
-    title: "Behind-the-Ear Hearing Aid",
+    title: "This is in the ear hearing aid",
     description: "Powerful sound amplification with all-day comfort.",
     price: "₹24,999",
     image: p1,

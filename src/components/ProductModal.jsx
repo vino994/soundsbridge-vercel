@@ -40,7 +40,7 @@ const ProductModal = ({ product, onClose }) => {
         <a href="tel:+919380334317">
           <button className="w-full flex items-center justify-center gap-3 bg-orange-500 text-white py-3 rounded-md font-semibold hover:bg-orange-600 transition">
             <FaPhoneAlt />
-            Book Free Consultation
+            Book Free Online Consultation
           </button>
         </a>
       </div>

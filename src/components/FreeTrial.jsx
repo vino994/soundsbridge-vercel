@@ -89,7 +89,7 @@ const FreeTrial = () => {
               onClick={() => setShowForm(true)}
               className="bg-blue-700 hover:bg-blue-800 px-8 py-3 rounded-full font-semibold transition"
             >
-              Book Your Free Trial
+              Book Your Free Online Consultation
             </button>
           </div>
         </div>
@@ -107,7 +107,7 @@ const FreeTrial = () => {
             </button>
 
             <h3 className="text-2xl font-bold text-center mb-2">
-              Book Your Free Trial
+              Book Free Online Consultation
             </h3>
             <p className="text-sm text-center text-white mb-4">
               Fill in your details and our hearing expert will contact you.
